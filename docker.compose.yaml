@@ -1,0 +1,17 @@
+services:
+  mcp-server:
+    image: infinitepumpkin/study-app-mcp:latest
+    ports:
+      - 3003:3003
+    restart: unless-stopped
+    networks:
+      - cloudflare
+    volumes:
+      - /home/jack/dev/study-app/data:/app/data
+    environment:
+      - APP_DATA_LOCATION=/app/data/db.json
+
+networks:
+  cloudflare:
+    external: true
+    name: Cloudlfare
