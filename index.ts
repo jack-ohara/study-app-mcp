@@ -51,15 +51,16 @@ server.tool(
   }
 );
 
-server.resource("study-notes", "study-notes://all", async (uri) => {
+server.tool("get-all-study-notes", {}, async () => {
+  console.log("Fetching all study notes...");
+
   const data = await getAllNotes();
 
   return {
-    contents: [
+    content: [
       {
-        uri: uri.href,
+        type: "text",
         text: JSON.stringify(data),
-        mimeType: "application/json",
       },
     ],
   };
