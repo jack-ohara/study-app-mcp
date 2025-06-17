@@ -19,6 +19,7 @@ const server = new McpServer({
 
 server.tool(
   "add-class-study-notes",
+  "Add study notes for a specific class and term.",
   {
     term: z.number(),
     classNumber: z.number(),
@@ -37,6 +38,7 @@ server.tool(
 
 server.tool(
   "add-misc-study-notes",
+  "Add miscellaneous study notes that are not tied to a specific class or term.",
   {
     notes: z.array(z.string()),
   },
@@ -51,7 +53,7 @@ server.tool(
   }
 );
 
-server.tool("get-all-study-notes", {}, async () => {
+server.tool("get-all-study-notes", "Fetch all study notes.", {}, async () => {
   console.log("Fetching all study notes...");
 
   const data = await getAllNotes();
